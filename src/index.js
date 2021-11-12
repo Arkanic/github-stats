@@ -3,7 +3,15 @@ const express = require("express");
 const totalStars = require("./api/totalStars");
 const drawStars = require("./tiles/stars");
 
+const flags = process.argv.slice(2);
+
 const app = express();
+
+app.get("/", (req, res) => {
+    // only do this in production, to stop auto redirects
+    if(!flags.includes("--dev")) res.redirect("https://github.com/Arkanic/github-stats");
+    else res.send("running dev mode");
+});
 
 app.get("/stars", (req, res) => {
     res.setHeader("Content-Type", "image/svg+xml");
