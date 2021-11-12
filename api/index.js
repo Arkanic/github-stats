@@ -1,7 +1,7 @@
 const express = require("express");
 
-const totalStars = require("./api/totalStars");
-const drawStars = require("./tiles/stars");
+const totalStars = require("../src/api/totalStars");
+const drawStars = require("../src/tiles/stars");
 
 const app = express();
 
@@ -17,6 +17,4 @@ app.get("/stars", (req, res) => {
     });
 });
 
-app.listen(process.env.PORT || "3000", () => {
-    console.log("Server Started");
-});
+module.exports = app;
